@@ -19,9 +19,7 @@ public class TokenController {
     }
 
     @PostMapping("/validate")
-    public ResponseEntity<?> validateToken(@RequestBody Map<String, String> request) {
-        String token = request.get("token");
-
+    public ResponseEntity<?> validateToken(RequestHeader("Authorization") String token) {
         try {
             Jwt jwt = jwtDecoder.decode(token);
             return ResponseEntity.ok(Map.of(
